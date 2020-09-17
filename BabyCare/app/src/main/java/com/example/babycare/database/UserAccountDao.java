@@ -23,6 +23,9 @@ public interface UserAccountDao {
     @Delete
     void delete(UserAccount user);
 
+    @Query("UPDATE useraccounts SET babyName = :name where email = :mail")
+    void updateBabyName(String name, String mail);
+
     @Query("SELECT * FROM useraccounts")
     LiveData<List<UserAccount>> getUser();
 
@@ -34,5 +37,11 @@ public interface UserAccountDao {
 
     @Query("SELECT email FROM useraccounts where email= :mail")
     LiveData<List<String>> getUserName(String mail);
+
+    @Query("UPDATE useraccounts SET babySex = :sex where email = :mail")
+    void updateBabySex(String sex, String mail);
+
+    @Query("UPDATE useraccounts SET babyBirthday = :birth where email = :mail")
+    void updateBabyBirth(String birth, String mail);
 }
 

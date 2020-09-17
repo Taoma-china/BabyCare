@@ -36,4 +36,5 @@
         android:name="com.example.babycare.ui.today.AddBabyFragment"
         android:label="@string/AddBaby"
         tools:layout="@layout/fragment_addbaby" />
+
 </navigation>

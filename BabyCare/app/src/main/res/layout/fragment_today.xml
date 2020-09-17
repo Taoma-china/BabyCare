@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.today.TodayFragment">
+    tools:context=".ui.today.TodayFragment"
+    android:id="@+id/fragment_today">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager_today"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/text_home"
@@ -24,12 +36,27 @@
         android:id="@+id/addBaby"
         android:layout_width="172dp"
         android:layout_height="121dp"
-        android:text="Add a new baby"
+
+        android:text="@string/add_a_new_baby"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/text_home"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/text_home"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="add_baby"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
+
+<!--    <fragment-->
+<!--        android:id="@+id/babyInfo"-->
+<!--        android:name="com.example.babycare.ui.today.TodayBabyinfo"-->
+<!--        android:layout_width="409dp"-->
+<!--        android:layout_height="329dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.039"-->
+<!--        tools:ignore="MissingConstraints" />-->
+
+    <!--    <include layout="@layout/today_babyinfo" />-->
+
 </androidx.constraintlayout.widget.ConstraintLayout>

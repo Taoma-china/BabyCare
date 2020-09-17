@@ -1,12 +1,15 @@
 package com.example.babycare.layout;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.transition.FragmentTransitionSupport;
 
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,11 +20,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.babycare.AfterLogin_Main;
 import com.example.babycare.MainActivity;
 import com.example.babycare.R;
 import com.example.babycare.database.UserAccount;
 import com.example.babycare.database.UserRepository;
 import com.example.babycare.viewmodel.UserViewModel;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -124,17 +130,38 @@ public class fragment_register extends Fragment {
                 email = usernameText.getText().toString().trim();
                 password = passwordText.getText().toString().trim();
                 re_password = re_passwordText.getText().toString().trim();
-                UserAccount newUser = new UserAccount(name, email, password);
+                final UserAccount newUser = new UserAccount(name, email, password, re_password);
+
                 if(!password.equals(re_password)) {
                     Toast.makeText(getActivity(), "Password don't match", Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(getActivity(), "Successful Created", Toast.LENGTH_SHORT).show();
-                    try {
-                        repository.insert(newUser);
 
-                    } catch (NullPointerException ignored){
 
-                    }
+                    userViewModel.checkUser(newUser).observe(getActivity(), new Observer<List<UserAccount>>() {
+                        @Override
+                        public void onChanged(List<UserAccount> userAccounts) {
+
+                            if (userAccounts.size() != 0) {
+
+
+                                Toast.makeText(getActivity(), "Account existed", Toast.LENGTH_SHORT).show();
+                            } else {
+                                userViewModel.insert(newUser);
+                                Toast.makeText(getActivity(), "Successful Created", Toast.LENGTH_SHORT).show();
+
+                            }
+
+                        }
+                    });
+
+
+
+
+
+
+
+
+
 
 
 

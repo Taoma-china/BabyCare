@@ -1,6 +1,7 @@
 package com.example.babycare.layout;
 
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
@@ -22,6 +23,7 @@ import androidx.room.Room;
 
 
 import android.renderscript.ScriptGroup;
+import android.telecom.Call;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +34,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.babycare.AfterLogin_Main;
+import com.example.babycare.MainActivity;
 import com.example.babycare.R;
 import com.example.babycare.database.UserAccount;
 import com.example.babycare.database.UserAccountDao;
@@ -63,6 +66,7 @@ public class fragment_login extends Fragment {
     private Button signUpButton;
     private UserViewModel userViewModel;
     private ScriptGroup.Binding binding;
+    public String transferEmail;
 
     public fragment_login() {
         // Required empty public constructor
@@ -116,6 +120,7 @@ public class fragment_login extends Fragment {
 
     }
 
+
     @Override
     public void onViewCreated(View view, final Bundle savedInstanceState) {
         loginButton = view.findViewById(R.id.btn_login);
@@ -125,11 +130,11 @@ public class fragment_login extends Fragment {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                String name = "tete:;";
-
+                String name = "tete:;";
+                String re_password = "dd";
                 String email = usernameText.getText().toString().trim();
                 String password = passwordText.getText().toString().trim();
-                UserAccount newUser = new UserAccount(email, password);
+                UserAccount newUser = new UserAccount(name, email, password, re_password);
 
 
                 userViewModel.find(newUser).observe(getActivity(), new Observer<List<UserAccount>>() {
@@ -138,8 +143,11 @@ public class fragment_login extends Fragment {
                         Log.d(TAG, "onChanged" + userAccounts);
                         Log.d(TAG, "onChanged" + userAccounts.size());
                         if (userAccounts.size() != 0 && (!userAccounts.get(0).getEmail().equals("") && !userAccounts.get(0).getPassword().equals(""))) {
-
+                            transferEmail = userAccounts.get(0).getEmail();
                             Intent intent = new Intent(getActivity(), AfterLogin_Main.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putString("UserEmail", transferEmail);
+                            intent.putExtras(bundle);
                             startActivity(intent);
                             Toast.makeText(getActivity(), "Login successfully", Toast.LENGTH_SHORT).show();
                         } else {
@@ -158,6 +166,11 @@ public class fragment_login extends Fragment {
         });
 
     }
+
+//    public void sendMessage(MainActivity.ICallBack callBack) {
+//        callBack.get_message_from_Fragment(transferEmail);
+//    }
+
 
 
 

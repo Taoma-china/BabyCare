@@ -1,16 +1,10 @@
 package com.example.babycare.database;
 
-import android.app.Application;
 import android.content.Context;
-import android.nfc.Tag;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.view.View;
 
-import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.loader.content.AsyncTaskLoader;
 
 import java.util.List;
 
@@ -41,26 +35,60 @@ public class UserRepository {
 
 
      public LiveData<List<UserAccount>> find(UserAccount userAccount) {return userAccountDao.getUserMailAndPass(userAccount.getEmail(),userAccount.getPassword());}
+     public LiveData<List<UserAccount>> getUserMail(UserAccount userAccount) {return userAccountDao.getUserMail(userAccount.getEmail());}
 
-//     private static class findAsyncTask extends AsyncTask<UserAccount, LiveData, LiveData> {
-//         private UserAccountDao mAsyncTaskDao1;
-//
-//         findAsyncTask(UserAccountDao dao) {
-//             mAsyncTaskDao1 = dao;
-//         }
-//
-//         @Override
-//         protected LiveData<List<UserAccount>> doInBackground(UserAccount... params) {
-//             return mAsyncTaskDao1.getUserMailAndPass(params[0].getEmail(), params[0].getPassword());
-//         }
-//     }
-//         return userAccountDao.getUserMailAndPass(userAccount.getEmail(),userAccount.getPassword());
+     public void updateBabyName(String babyName, String email) { new updateAsyncTask(userAccountDao).execute(babyName, email); }
+
+     private static class updateAsyncTask extends AsyncTask<String, String, Void> {
+
+         private UserAccountDao mAsyncTaskDao2;
 
 
+         public updateAsyncTask(UserAccountDao userAccountDao) {
+             mAsyncTaskDao2 = userAccountDao;
+         }
+
+         @Override
+         protected Void doInBackground(String... strings) {
+             mAsyncTaskDao2.updateBabyName(strings[0], strings[1]);
+             return null;
+         }
+     }
+
+    public void updateBabySex(String babySex, String email) { new updateBabySexAsyncTask(userAccountDao).execute(babySex, email); }
+
+    private static class updateBabySexAsyncTask extends AsyncTask<String, String, Void> {
+
+        private UserAccountDao mAsyncTaskDao3;
 
 
+        public updateBabySexAsyncTask(UserAccountDao userAccountDao) {
+            mAsyncTaskDao3= userAccountDao;
+        }
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            mAsyncTaskDao3.updateBabySex(strings[0], strings[1]);
+            return null;
+        }
+    }
+    public void updateBabyBirth(String babyName, String email) { new updateBabyBirthAsyncTask(userAccountDao).execute(babyName, email); }
+
+    private static class updateBabyBirthAsyncTask extends AsyncTask<String, String, Void> {
+
+        private UserAccountDao mAsyncTaskDao3;
 
 
+        public updateBabyBirthAsyncTask(UserAccountDao userAccountDao) {
+            mAsyncTaskDao3 = userAccountDao;
+        }
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            mAsyncTaskDao3.updateBabyBirth(strings[0], strings[1]);
+            return null;
+        }
+    }
 
 
 
@@ -88,6 +116,8 @@ public class UserRepository {
          }
 
      }
+
+
 
 //
 //    public LiveData<List<UserAccount>> find(UserAccount userAccount){

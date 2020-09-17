@@ -2,104 +2,127 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.today.AddBabyFragment"
-    >
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/fragment_addBaby"
+    tools:context=".ui.today.AddBabyFragment">
 
-
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:background="?attr/colorPrimary"
-        app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="323dp"
+        android:layout_height="526dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="40dp"
+
+        >
 
         <TextView
             android:id="@+id/baby_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/baby_information"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/baby_name"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.105"
+            app:layout_constraintHorizontal_bias="0.129"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.3" />
+            app:layout_constraintVertical_bias="0.201" />
 
         <EditText
             android:id="@+id/baby_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:ems="10"
+            android:hint="Name"
             android:inputType="textPersonName"
-            android:text="@string/name"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.447"
+            app:layout_constraintHorizontal_bias="0.451"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/baby_info"
-            app:layout_constraintVertical_bias="0.033" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.168" />
 
         <EditText
             android:id="@+id/baby_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="28dp"
             android:ems="10"
+            android:hint="Birthday"
             android:inputType="date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.447"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/baby_name" />
 
-        <CheckBox
-            android:id="@+id/gender_male"
-            android:layout_width="85dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/male"
+        <RadioGroup
+            android:id="@+id/selectGender"
+            android:layout_width="216dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="8dp"
+
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/infor_submit"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.276"
+            app:layout_constraintHorizontal_bias="0.42"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/baby_date"
-            tools:ignore="MissingConstraints" />
+            app:layout_constraintVertical_bias="0.47"
+            tools:ignore="MissingConstraints">
 
-        <CheckBox
-            android:id="@+id/gender_female"
-            android:layout_width="85dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/female"
-            app:layout_constraintStart_toEndOf="@+id/gender_male"
-            app:layout_constraintTop_toBottomOf="@+id/baby_date" />
+            <RadioButton
+                android:id="@+id/gender_male"
+                android:layout_width="85dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/male"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.195"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/baby_date"
+                tools:ignore="MissingConstraints" />
+
+            <RadioButton
+                android:id="@+id/gender_female"
+                android:layout_width="94dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/female"
+                app:layout_constraintStart_toEndOf="@+id/gender_male"
+                app:layout_constraintTop_toBottomOf="@+id/baby_date" />
+        </RadioGroup>
 
         <Button
             android:id="@+id/infor_submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="164dp"
-            android:onClick="transfer_today"
+
             android:text="@string/submit"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.455"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.459"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/baby_date"
+            app:layout_constraintVertical_bias="0.451" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="170dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.887"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/infor_submit"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@android:drawable/ic_dialog_email" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

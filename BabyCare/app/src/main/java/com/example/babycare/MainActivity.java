@@ -2,6 +2,7 @@ package com.example.babycare;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 
@@ -34,10 +35,25 @@ public class MainActivity extends AppCompatActivity {
         ViewPager viewPager = findViewById(R.id.viewPager);
 
         AuthenticationPagerAdater pagerAdater = new AuthenticationPagerAdater(getSupportFragmentManager());
-        pagerAdater.addFragment(new fragment_login());
-        pagerAdater.addFragment(new fragment_register());
+        fragment_login fragment_login = new fragment_login();
+        fragment_register fragment_register = new fragment_register();
+        pagerAdater.addFragment(fragment_login);
+        pagerAdater.addFragment(fragment_register);
         viewPager.setAdapter(pagerAdater);
 
+//        fragment_login.sendMessage(new ICallBack() {
+//            @Override
+//            public void get_message_from_Fragment(String string) {
+//                receivedEmail = string;
+//                while(receivedEmail!=null) {
+//                    Intent intent = new Intent(MainActivity.this, AfterLogin_Main.class);
+//                    Bundle bundle = new Bundle();
+//                    bundle.putString("UserEmail", receivedEmail);
+//                    intent.putExtras(bundle);
+//                    startActivity(intent);
+//                }
+//            }
+//        });
 
 
 
@@ -45,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+//    public interface ICallBack {
+//        void get_message_from_Fragment(String string);
+//    }
 
 //    public void clickLogin(View view) {
 //        Intent intent = new Intent(MainActivity.this, AfterLogin_Main.class);
