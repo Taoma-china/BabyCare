@@ -19,6 +19,10 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.babycare.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.net.ssl.HandshakeCompletedListener;
 
 /**
@@ -34,8 +38,7 @@ public class FeedFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+
     private Button finish;
     private TodayViewModel todayViewModel;
 
@@ -121,10 +124,7 @@ public class FeedFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
 
     }
 
@@ -248,11 +248,17 @@ private void initViews2() {
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String leftTime = "(L)"+ mint.getText()+":"+sec.getText() +"(R)"+ mint2.getText()+":"+sec.getText();
+                String leftTime = "(L)"+ mint.getText()+":"+sec.getText() +"(R)"+ mint2.getText()+":"+sec2.getText();
 
                 todayViewModel.setFeedTime(leftTime);
+                Date date = new Date();
+                String strDateFormat = "HH:mm:ss";
+                SimpleDateFormat sdf = new SimpleDateFormat(strDateFormat);
+                todayViewModel.setFeedDate(sdf.format(date).toString());
                 FragmentManager fm = getFragmentManager();
                 fm.popBackStack();
+
+
 
             }
         });

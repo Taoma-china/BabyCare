@@ -57,5 +57,31 @@ public class TodayViewModel extends ViewModel {
         return babyDate;
     }
 
+    private final MutableLiveData<String> feedDate = new MutableLiveData<>();
+    public void setFeedDate(String time) {
+        feedDate.setValue(time);
+    }
+    public LiveData<String> getFeedDate() {
+        return feedDate;
+    }
+
+
+    private final MutableLiveData<String> sleepTime = new MutableLiveData<>();
+    public void setSleepTime(String time) {
+        sleepTime.setValue(time);
+    }
+    public LiveData<String> getSleepTime() {
+        return sleepTime;
+    }
+
+
+    private final MutableLiveData<String> sleepDate = new MutableLiveData<>();
+    public void setSleepDate(String time) {
+        sleepDate.setValue(time);
+    }
+    public LiveData<String> getSleepDate() {
+        return sleepDate;
+    }
+
 //
 }

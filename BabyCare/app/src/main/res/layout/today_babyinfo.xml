@@ -1,0 +1,237 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width = "fill_parent"
+    android:layout_height= "fill_parent"
+    android:scrollbars="vertical"
+    >
+<LinearLayout
+    android:id="@+id/fragment_babyinfo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C0C0C0"
+    android:orientation="vertical"
+    tools:context=".ui.today.TodayBabyinfo">
+
+
+        <TextView
+            android:id="@+id/show_baby_name"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="@string/babyname" />
+
+        <ImageView
+            android:id="@+id/baby_picture"
+            android:layout_width="match_parent"
+            android:layout_height="144dp"
+
+            android:contentDescription="@string/babyimage" />
+
+        <TextView
+            android:id="@+id/show_baby_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date" />
+
+        <Button
+            android:id="@+id/select_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/select_image" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+                <Switch
+                    android:id="@+id/dailylog"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Switch"
+
+                    />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/switchconstraint"
+                    android:layout_width="match_parent"
+                    android:layout_height="461dp">
+
+
+                        <ImageView
+                            android:id="@+id/FEEDIMAGE"
+
+                            style="@style/dailyform"
+                            android:layout_width="50dp"
+                            android:layout_height="51dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="28dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:src="@tools:sample/avatars" />
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/FEEDFLOATING"
+
+                            style="@style/dailyform"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="84dp"
+                            android:layout_marginTop="9dp"
+                            android:layout_marginEnd="16dp"
+                            android:clickable="true"
+                            android:src="@android:drawable/ic_input_add"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/LASTFEDTIME"
+                            app:layout_constraintTop_toBottomOf="@+id/FEED" />
+
+                        <TextView
+                            android:id="@+id/FEED"
+                            android:layout_width="164dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="11dp"
+                            android:text="FEED"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/FEEDIMAGE"
+                            tools:layout_editor_absoluteY="28dp" />
+
+                        <TextView
+                            android:id="@+id/LASTFEED"
+                            android:layout_width="62dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="4dp"
+                            android:text="Last Feed"
+                            app:layout_constraintEnd_toEndOf="@+id/BREAST"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toEndOf="@+id/FEEDIMAGE"
+                            app:layout_constraintTop_toBottomOf="@+id/FEED" />
+
+                        <TextView
+                            android:id="@+id/BREAST"
+                            android:layout_width="62dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="4dp"
+                            android:text="Breast"
+                            app:layout_constraintStart_toEndOf="@+id/FEEDIMAGE"
+                            app:layout_constraintTop_toBottomOf="@+id/LASTFEED" />
+
+                        <TextView
+                            android:id="@+id/LASTFEDTIME"
+                            android:layout_width="86dp"
+                            android:layout_height="31dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="4dp"
+                            android:ems="10"
+                            android:inputType="date"
+                            app:layout_constraintStart_toEndOf="@+id/LASTFEED"
+                            app:layout_constraintTop_toBottomOf="@+id/FEED" />
+
+                        <TextView
+                            android:id="@+id/BREASLR"
+                            android:layout_width="151dp"
+                            android:layout_height="29dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="4dp"
+                            android:ems="10"
+                            android:inputType="date"
+                            app:layout_constraintStart_toEndOf="@+id/BREAST"
+                            app:layout_constraintTop_toBottomOf="@+id/LASTFEDTIME" />
+
+
+                        //sleep
+
+
+                        <ImageView
+                            android:id="@+id/SLEEPIMAGE"
+
+                            style="@style/dailyform"
+                            android:layout_width="50dp"
+                            android:layout_height="51dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="96dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/FEEDIMAGE"
+                            tools:src="@tools:sample/avatars" />
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/SLEEPFLOTING"
+
+                            style="@style/dailyform"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="84dp"
+                            android:layout_marginTop="9dp"
+                            android:layout_marginEnd="16dp"
+                            android:clickable="true"
+                            android:src="@android:drawable/ic_input_add"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/AWAKETIME"
+                            app:layout_constraintTop_toBottomOf="@+id/SLEEP" />
+
+                        <TextView
+                            android:id="@+id/SLEEP"
+                            android:layout_width="164dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="11dp"
+
+                            android:layout_marginTop="40dp"
+                            android:text="SLEEP"
+                            app:layout_constraintEnd_toStartOf="@+id/SLEEPFLOTING"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/SLEEPIMAGE"
+                            app:layout_constraintTop_toBottomOf="@+id/BREASLR" />
+
+                        <TextView
+                            android:id="@+id/AWAKE"
+                            android:layout_width="62dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="4dp"
+                            android:text="Awake"
+                            app:layout_constraintStart_toEndOf="@+id/SLEEPIMAGE"
+                            app:layout_constraintTop_toBottomOf="@+id/SLEEP" />
+
+                        <TextView
+                            android:id="@+id/TODAY"
+                            android:layout_width="62dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="4dp"
+                            android:text="Today"
+                            app:layout_constraintStart_toEndOf="@+id/SLEEPIMAGE"
+                            app:layout_constraintTop_toBottomOf="@+id/AWAKE" />
+
+                        <TextView
+                            android:id="@+id/AWAKETIME"
+                            android:layout_width="85dp"
+                            android:layout_height="29dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="4dp"
+                            android:ems="10"
+                            android:inputType="date"
+                            app:layout_constraintStart_toEndOf="@+id/AWAKE"
+                            app:layout_constraintTop_toBottomOf="@+id/SLEEP" />
+
+                        <TextView
+                            android:id="@+id/TODAYTIME"
+                            android:layout_width="87dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="4dp"
+                            android:ems="10"
+                            android:inputType="date"
+                            app:layout_constraintStart_toEndOf="@+id/TODAY"
+                            app:layout_constraintTop_toBottomOf="@+id/AWAKETIME" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+
+</LinearLayout>
+</ScrollView>

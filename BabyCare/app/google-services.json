@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "584210720190",
+    "firebase_url": "https://babycare-908cc.firebaseio.com",
+    "project_id": "babycare-908cc",
+    "storage_bucket": "babycare-908cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584210720190:android:572ab3d8943b82853245ef",
+        "android_client_info": {
+          "package_name": "com.example.babycare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "584210720190-hdiuupsh68kenunp1aqc6qcmp3nj5d8b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsjqOyajO87HhiEatOYVCns_M7jdsq6Qk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "584210720190-hdiuupsh68kenunp1aqc6qcmp3nj5d8b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

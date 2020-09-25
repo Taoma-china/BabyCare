@@ -1,0 +1,7 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">LoginWithSQLiteDBExample</string>
+    <string name="username">Username:</string>
+    <string name="login" tools:ignore="DuplicateDefinition">Login</string>
+    <string name="password">Password:</string>
+
+</resources>
